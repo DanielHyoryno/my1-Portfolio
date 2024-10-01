@@ -14,7 +14,7 @@ const Menu = () => {
                     to="Home"
                     smooth={true}
                     spy={true}
-                    offset={0}
+                    offset={-50}
                     duration={350}
                 > 
                     <IoHomeOutline className="text-[26px] m-[10px] text-center" />
@@ -36,7 +36,7 @@ const Menu = () => {
                     to="Experience"
                     smooth={true}
                     spy={true}
-                    offset={-350}
+                    offset={-300}
                     duration={350}
                 > 
                     <BsBag className="text-[26px] m-[10px] text-center" />
