@@ -120,7 +120,7 @@ const Banner = () => {
 
                     <div id="title" className='mouse-section hidden lg:flex flex-col justify-center'>
                         <LuMouse className='text-xl animate-bounce mb-3' />
-                        <p className='[writing-mode:vertical-rl]'>Lorem ipsum dolor.</p>
+                        <p className='[writing-mode:vertical-rl]'>Scroll Down.</p>
                     </div>
                 </div>
             </div>
