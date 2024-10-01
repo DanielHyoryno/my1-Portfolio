@@ -58,7 +58,7 @@ const Menu = () => {
                     to="Footer"
                     smooth={true}
                     spy={true}
-                    offset={-300}
+                    offset={-250}
                     duration={150}
                 > 
                     <AiOutlineMessage className="text-[26px] m-[10px] text-center" />
