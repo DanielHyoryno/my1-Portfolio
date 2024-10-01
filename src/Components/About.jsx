@@ -4,6 +4,7 @@ import { FaAward } from "react-icons/fa";
 import { useLayoutEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
+import aboutme from "../assets/aboutme.jfif"
 
 const About = () => {
     const comp = useRef(null); 
@@ -43,8 +44,8 @@ const About = () => {
             <p className='text-lg mb-12 text-center'></p> {/* Adjusted paragraph size */}
 
             <div id="intro-slider" className="flex flex-col lg:flex-row items-center justify-center gap-6"> {/* Maintain row layout */}
-                <div id="profile-image" className="px-2 py-2 w-[150px] lg:w-[300px]"> {/* Adjusted width */}
-                    <img className='w-full h-[200px] lg:h-[400px] rounded-xl' src={profile2} alt="Profile" /> {/* Adjusted image size */}
+                <div id="profile-image" className="px-2 py-2 w-[150px] lg:w-[250px]"> {/* Adjusted width */}
+                    <img className='w-full h-[250px] lg:h-[400px] rounded-xl' src={aboutme} alt="Profile" /> {/* Adjusted image size */}
                 </div>
 
                 <div className="w-full lg:w-1/2 text-center lg:text-left">
@@ -70,8 +71,7 @@ const About = () => {
 
                     <div className="bg-transparent p-2 lg:p-4 rounded-lg max-w-lg mx-auto text-left lg:text-left">
                         <p className="text-[12px] lg:text-[16px] mb-3 lg:mb-6 about-text"> {/* Adjusted text size */}
-                            For the past year, I have been on an exciting journey to launch my own start-up business.
-                            My vision centers around creating a website-based platform that I believe has great potential.
+                            For the past year, I have been on an exciting journey to learn more about Software Engineering.
                         </p>
                         <p className="text-[12px] lg:text-[16px] about-text"> {/* Adjusted text size */}
                             Throughout this time, I have dedicated myself to learning both front-end and back-end programming, 

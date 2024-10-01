@@ -1,7 +1,9 @@
 import { FiGithub, FiInstagram } from 'react-icons/fi';
 import { FaLinkedinIn, FaFacebookF } from 'react-icons/fa6';
 import { LuMouse } from 'react-icons/lu';
+import profile1 from '../assets/profile1.png';
 import profile2 from '../assets/profile2.jpg';
+
 import { useLayoutEffect, useRef, useState, useEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
@@ -79,7 +81,7 @@ const Banner = () => {
                                 />
                             </h2>
                             
-                            <p id='title' className="text-lg md:text-2xl text-blue-400">Front-End Developer</p>
+                            <p id='title' className="text-lg md:text-2xl text-blue-400">Novice Developer</p>
                             <p id='title' className="text-sm md:text-base text-gray-300">
                                 Hello! I am just a student who is embarking on an exciting journey to establish my own career in Software Engineering.
                             </p>
@@ -96,7 +98,7 @@ const Banner = () => {
 
                         <div className="home-profile-picture md:w-[500px] flex justify-center p-0 m-0">
                             <img id='intro-slider'
-                                src={profile2}
+                                src={profile1}
                                 alt="Daniel Hyoryno Thenaka"
                                 className="rounded-full w-32 h-32 md:w-80 md:h-80 object-cover"
                             />
