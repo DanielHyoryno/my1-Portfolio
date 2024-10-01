@@ -14,7 +14,7 @@ const Menu = () => {
                     to="Home"
                     smooth={true}
                     spy={true}
-                    offset={-50}
+                    offset={-70}
                     duration={350}
                 > 
                     <IoHomeOutline className="text-[26px] m-[10px] text-center" />
