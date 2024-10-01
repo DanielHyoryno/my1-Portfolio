@@ -65,26 +65,26 @@ const Banner = () => {
     return (
         <>
             <div ref={comp}>
-                <div id="Home" className="px-50 py-10 max-w-6xl mx-auto">
-                    <div className="flex flex-col md:flex-row items-center md:items-start justify-between w-full">
-                        <div id='title' className="home-profile-text md:w-1/2 space-y-2 mb-6 md:mb-0 ml-20 mr-20"> {/* Added ml-4 for left margin */}                            <p className="text-lg text-gray-400">Hello, I'm</p>
-                            <h2 id='title' className="text-1xl md:text-4xl font-bold flex items-center">
+                <div id="Home" className="px-4 py-10 max-w-6xl mx-auto sm:px-2 md:px-4">
+                    <div className="flex flex-col-reverse sm:flex-col-reverse md:flex-row items-center md:items-start justify-between w-full">
+                        <div id='title' className="home-profile-text md:w-1/2 space-y-2 mb-6 md:mb-0 mx-4">
+                            <p className="text-sm md:text-lg text-gray-400">Hello, I'm</p>
+                            <h2 id='title' className="text-xl md:text-4xl font-bold flex items-center">
                                 <ReactTypingEffect
-                                    text={["Daniel Hyoryno Thenaka", "El Malas"]}
-                                    speed={100} // Speed of typing
-                                    eraseSpeed={100} // Speed of erasing
-                                    eraseDelay={2000} // Delay before erasing
-                                    typingDelay={1000} // Delay before starting to type
-                                    
+                                    text={["Daniel Hyoryno Thenaka"]}
+                                    speed={100}
+                                    eraseSpeed={100}
+                                    eraseDelay={2000}
+                                    typingDelay={1000}
                                 />
                             </h2>
                             
-                            <p id='title' className="text-xl text-blue-400">Front-End Developer</p>
-                            <p id='title' className="text-gray-300 text-sm md:text-base">
+                            <p id='title' className="text-lg md:text-2xl text-blue-400">Front-End Developer</p>
+                            <p id='title' className="text-sm md:text-base text-gray-300">
                                 Hello! I am just a student who is embarking on an exciting journey to establish my own career in Software Engineering.
                             </p>
 
-                            <div className="flex space-x-4 mt-6">
+                            <div className="flex space-x-4 mt-6 flex-wrap">
                                 <button className="px-4 py-2 rounded mt-6 border border-[#1484da] hover:bg-blue-400 hover:border-transparent transition duration-300 text-white text-sm">
                                     Download CV
                                 </button>
@@ -98,11 +98,12 @@ const Banner = () => {
                             <img id='intro-slider'
                                 src={profile2}
                                 alt="Daniel Hyoryno Thenaka"
-                                className="rounded-full w-40 h-40 md:w-80 md:h-80 object-cover"
+                                className="rounded-full w-32 h-32 md:w-80 md:h-80 object-cover"
                             />
                         </div>
                     </div>
                 </div>
+
 
                 {/* Social Media Links and Second Profile Picture Section */}
                 <div className='text-white flex lg:flex-row flex-col lg:justify-around items-center'>

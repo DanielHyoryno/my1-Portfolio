@@ -1,9 +1,8 @@
 import React from 'react';
-import ReactTypingEffect from 'react-typing-effect';
 
 const Header = () => {
     return (
-        <div className="px-20 py-4 text-xl mt-10">
+        <div className="px-8 lg:px-[100px] lg:py-[2px] text-xl mt-10">
             <h2>
                 Daniel | Portfolio
             </h2>

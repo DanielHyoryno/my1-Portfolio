@@ -23,7 +23,7 @@ const Skills = () => {
                     duration: 1 + (index * 0.1), // Increasing duration for each item
                     scrollTrigger: {
                         trigger: item,
-                        start: "top bottom-=100",
+                        start: "top 120%",
                         end: "top center",
                         scrub: 1,
                     }
@@ -40,18 +40,18 @@ const Skills = () => {
         { Icon: DiJavascript1, name: "JavaScript", level: "Intermediate" },
         { Icon: IoLogoReact, name: "React JSX", level: "Basic" },
         { Icon: TbBrandBootstrap, name: "Bootstrap", level: "Basic" },
-        { Icon: TbBrandTailwind, name: "Tailwind CSS", level: "Basic" },
+        { Icon: TbBrandTailwind, name: "Tailwind", level: "Basic" },
     ];
 
     return (
-        <div ref={comp} className="py-44 lg:px-44 md:px-40 px-[20px]" id="Skills">
-            <h1 className="text-4xl text-white font-bold mb-10 text-center">Skills</h1>
-            <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-6">
+        <div ref={comp} className="py-20 lg:py-44 lg:px-44 md:px-40 px-[20px]" id="Skills">
+            <h1 className="text-3xl md:text-4xl text-white font-bold mb-10 text-center">Skills</h1>
+            <div className="grid grid-cols-3 gap-4"> {/* Always 3 columns */}
                 {skillsData.map(({ Icon, name, level }, index) => (
-                    <div key={name} className="skill-item bg-slate-900 p-[20px] rounded-xl flex flex-col items-center justify-center">
-                        <Icon className="text-[60px] my-4 text-center text-[#1484da]" />
-                        <h2 className="text-[17px] font-bold mb-4">{name}</h2>
-                        <span className="py-[1px] text-[16px] text-center">{level}</span>
+                    <div key={name} className="skill-item bg-slate-900 p-4 rounded-xl flex flex-col items-center justify-center h-[120px]"> {/* Adjusted height and padding */}
+                        <Icon className="text-[40px] my-2 text-center text-[#1484da]" /> {/* Smaller icon size */}
+                        <h2 className="text-[14px] font-bold mb-2">{name}</h2> {/* Smaller text size */}
+                        <span className="py-[1px] text-[12px] text-center">{level}</span> {/* Smaller text size */}
                     </div>
                 ))}
             </div>

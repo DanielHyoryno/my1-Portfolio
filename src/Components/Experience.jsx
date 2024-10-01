@@ -11,24 +11,24 @@ const Experience = () => {
             gsap.from(".experience-item", {
                 opacity: 0.01,
                 y: 100,
-                stagger: 1, // Increased stagger for slower sequential animation
-                duration: 3, // Increased duration
+                stagger: 1,
+                duration: 1.5, // Decreased duration for quicker animation
                 scrollTrigger: {
                     trigger: "#Experience",
-                    start: "top center",
-                    end: "bottom center",
-                    scrub: 1, // Increased scrub for slower scroll-based animation
+                    start: "top 150%",
+                    end: "bottom 50%",
+                    scrub: 1,
                 }
             });
 
             gsap.from(".timeline-dot", {
                 scale: 0,
-                duration: 1, // Increased duration
+                duration: 0.5, // Decreased duration
                 scrollTrigger: {
                     trigger: "#Experience",
                     start: "top center",
                     end: "bottom center",
-                    scrub: 1, // Increased scrub for slower scroll-based animation
+                    scrub: 1,
                 }
             });
         }, comp);
@@ -36,24 +36,23 @@ const Experience = () => {
         return () => ctx.revert();
     }, []);
 
-    return(
-        <div ref={comp} className="py-44 lg:px-62 md:px-28 bg-gray-900">
-            <h1 className="text-4xl text-white font-bold mb-10 text-center">Experience</h1>
-            <div id="Experience" className="max-w-7xl mx-auto w-[600px] grid grid-cols-9 px-2">
+    return (
+        <div ref={comp} className="py-20 lg:py-28 md:px-10 px-4 bg-gray-900"> {/* Adjusted padding */}
+            <h1 className="text-3xl md:text-4xl text-white font-bold mb-6 text-center">Experience</h1> {/* Adjusted heading size */}
+            <div id="Experience" className="max-w-6xl mx-auto w-full grid grid-cols-9 px-2"> {/* Adjusted max width */}
                 {/* Left side experience */}
                 <div className="col-span-4 w-full h-full">
-                    <div className="experience-item w-full h-full p-2 md:pl-4">
-                        <time className="mb-1 text-sm font-semibold leading-none text-gray-400">February 2022</time>
-                        <h3 className="text-lg font-semibold text-gray-200 my-2">MERN Stack Developer</h3>
-                        <p className="mb-4 text-base font-normal text-gray-500">Description of your MERN Stack Developer experience goes here.</p>
+                    <div className="experience-item w-full h-full p-2 md:pl-2"> {/* Adjusted padding */}
+                        <time className="mb-1 text-xs md:text-sm font-semibold leading-none text-gray-400">February 2022</time> {/* Adjusted text size */}
+                        <h3 className="text-md md:text-lg font-semibold text-gray-200 my-1">MERN Stack Developer</h3> {/* Adjusted text size */}
+                        <p className="mb-2 text-xs md:text-base font-normal text-gray-500">Description of your MERN Stack Developer experience goes here.</p> {/* Adjusted text size */}
                     </div>
                 </div>
 
                 {/* Timeline bar */}
                 <div className="relative col-span-1 w-full h-full flex justify-center items-center">
                     <div className="h-full w-1 bg-[#1484da]"></div>
-                    <div className="timeline-dot absolute w-6 h-6 rounded-full bg-[#1484da] z-10 text-white text-center">
-                    </div>
+                    <div className="timeline-dot absolute w-4 h-4 rounded-full bg-[#1484da] z-10 text-white text-center"></div> {/* Adjusted size */}
                 </div>
 
                 {/* Right side - empty for first item */}
@@ -64,31 +63,29 @@ const Experience = () => {
 
                 <div className="relative col-span-1 w-full h-full flex justify-center items-center">
                     <div className="h-full w-1 bg-[#1484da]"></div>
-                    <div className="timeline-dot absolute w-6 h-6 rounded-full bg-[#1484da] z-10 text-white text-center">
+                    <div className="timeline-dot absolute w-4 h-4 rounded-full bg-[#1484da] z-10 text-white text-center"></div> {/* Adjusted size */}
+                </div>
+
+                <div className="col-span-4 w-full h-full">
+                    <div className="experience-item w-full h-full p-2 md:pr-2"> {/* Adjusted padding */}
+                        <time className="mb-1 text-xs md:text-sm font-semibold leading-none text-gray-400">January 2021</time> {/* Adjusted text size */}
+                        <h3 className="text-md md:text-lg font-semibold text-gray-200 my-1">Frontend Developer</h3> {/* Adjusted text size */}
+                        <p className="mb-2 text-xs md:text-base font-normal text-gray-500">Description of your Frontend Developer experience goes here.</p> {/* Adjusted text size */}
                     </div>
                 </div>
 
                 <div className="col-span-4 w-full h-full">
-                    <div className="experience-item w-full h-full p-2 md:pr-4">
-                        <time className="mb-1 text-sm font-semibold leading-none text-gray-400">January 2021</time>
-                        <h3 className="text-lg font-semibold text-gray-200 my-2">Frontend Developer</h3>
-                        <p className="mb-4 text-base font-normal text-gray-500">Description of your Frontend Developer experience goes here.</p>
-                    </div>
-                </div>
-
-                <div className="col-span-4 w-full h-full">
-                    <div className="experience-item w-full h-full p-2 md:pl-4">
-                        <time className="mb-1 text-sm font-semibold leading-none text-gray-400">February 2022</time>
-                        <h3 className="text-lg font-semibold text-gray-200 my-2">MERN Stack Developer</h3>
-                        <p className="mb-4 text-base font-normal text-gray-500">Description of your MERN Stack Developer experience goes here.</p>
+                    <div className="experience-item w-full h-full p-2 md:pl-2"> {/* Adjusted padding */}
+                        <time className="mb-1 text-xs md:text-sm font-semibold leading-none text-gray-400">February 2022</time> {/* Adjusted text size */}
+                        <h3 className="text-md md:text-lg font-semibold text-gray-200 my-1">MERN Stack Developer</h3> {/* Adjusted text size */}
+                        <p className="mb-2 text-xs md:text-base font-normal text-gray-500">Description of your MERN Stack Developer experience goes here.</p> {/* Adjusted text size */}
                     </div>
                 </div>
 
                 {/* Timeline bar */}
                 <div className="relative col-span-1 w-full h-full flex justify-center items-center">
                     <div className="h-full w-1 bg-[#1484da]"></div>
-                    <div className="timeline-dot absolute w-6 h-6 rounded-full bg-[#1484da] z-10 text-white text-center">
-                    </div>
+                    <div className="timeline-dot absolute w-4 h-4 rounded-full bg-[#1484da] z-10 text-white text-center"></div> {/* Adjusted size */}
                 </div>
 
                 {/* Right side - empty for first item */}
@@ -99,17 +96,18 @@ const Experience = () => {
 
                 <div className="relative col-span-1 w-full h-full flex justify-center items-center">
                     <div className="h-full w-1 bg-[#1484da]"></div>
-                    <div className="timeline-dot absolute w-6 h-6 rounded-full bg-[#1484da] z-10 text-white text-center">
-                    </div>
+                    <div className="timeline-dot absolute w-4 h-4 rounded-full bg-[#1484da] z-10 text-white text-center"></div> {/* Adjusted size */}
                 </div>
 
                 <div className="col-span-4 w-full h-full">
-                    <div className="experience-item w-full h-full p-2 md:pr-4">
-                        <time className="mb-1 text-sm font-semibold leading-none text-gray-400">January 2021</time>
-                        <h3 className="text-lg font-semibold text-gray-200 my-2">Frontend Developer</h3>
-                        <p className="mb-4 text-base font-normal text-gray-500">Description of your Frontend Developer experience goes here.</p>
+                    <div className="experience-item w-full h-full p-2 md:pr-2"> {/* Adjusted padding */}
+                        <time className="mb-1 text-xs md:text-sm font-semibold leading-none text-gray-400">January 2021</time> {/* Adjusted text size */}
+                        <h3 className="text-md md:text-lg font-semibold text-gray-200 my-1">Frontend Developer</h3> {/* Adjusted text size */}
+                        <p className="mb-2 text-xs md:text-base font-normal text-gray-500">Description of your Frontend Developer experience goes here.</p> {/* Adjusted text size */}
                     </div>
                 </div>
+
+                {/* Additional experience items can be added here following the same structure */}
             </div>
         </div>
     );
