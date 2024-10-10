@@ -61,9 +61,9 @@ const Experience = () => {
                     <>
                         <div className="col-span-4 w-full h-full flex justify-center"> {/* Centering the content */}
                              <div className="experience-item w-full h-full p-2 md:pl-2"> {/* Adjusted padding */}
-                                 <time className="mb-1 text-xs md:text-sm font-semibold leading-none text-gray-400">2024 - Present</time> {/* Adjusted text size */}
-                                 <h3 className="text-md md:text-lg font-semibold text-gray-200 my-1">LnT Division</h3> {/* Adjusted text size */}
-                                 <p className="mb-2 text-xs md:text-base font-normal text-gray-500">Bina Nusantara Computer Club <i>(BNCC)</i></p> {/* Adjusted text size */}
+                                 <time className="mb-1 text-xs md:text-sm font-semibold leading-none text-gray-400">2022 - 2023</time> {/* Adjusted text size */}
+                                 <h3 className="text-md md:text-lg font-semibold text-gray-200 my-1">Inventory Manager</h3> {/* Adjusted text size */}
+                                 <p className="mb-2 text-xs md:text-base font-normal text-gray-500">Century Ponsel</p> {/* Adjusted text size */}
                              </div>
                          </div>
 
@@ -76,21 +76,21 @@ const Experience = () => {
                          {/* Right side - empty for first item */}
                          <div className="col-span-4 w-full h-full"></div>
 
-                         {/* Left side - empty for second item */}
+                         {/* Left side - empty for second item
                          <div className="col-span-4 w-full h-full"></div>
 
                          <div className="relative col-span-1 w-full h-full flex justify-center items-center">
                              <div className="h-full w-1 bg-[#1484da]"></div>
-                             <div className="timeline-dot absolute w-4 h-4 rounded-full bg-[#1484da] z-10 text-white text-center"></div> {/* Adjusted size */}
-                         </div>
+                             <div className="timeline-dot absolute w-4 h-4 rounded-full bg-[#1484da] z-10 text-white text-center"></div> 
+                         </div> */}
 
-                         <div className="col-span-4 w-full h-full flex justify-center"> {/* Centering the content */}
-                             <div className="experience-item w-full h-full p-2 md:pr-2"> {/* Adjusted padding */}
-                                 <time className="mb-1 text-xs md:text-sm font-semibold leading-none text-gray-400">2021 - 2022</time> {/* Adjusted text size */}
-                                 <h3 className="text-md md:text-lg font-semibold text-gray-200 my-1">Inventory Manager</h3> {/* Adjusted text size */}
-                                 <p className="mb-2 text-xs md:text-base font-normal text-gray-500">CV PROXIMA CENTAURI</p> {/* Adjusted text size */}
+                         {/* <div className="col-span-4 w-full h-full flex justify-center"> 
+                             <div className="experience-item w-full h-full p-2 md:pr-2"> 
+                                 <time className="mb-1 text-xs md:text-sm font-semibold leading-none text-gray-400">2021 - 2022</time>
+                                 <h3 className="text-md md:text-lg font-semibold text-gray-200 my-1">Inventory Manager</h3> 
+                                 <p className="mb-2 text-xs md:text-base font-normal text-gray-500">CV PROXIMA CENTAURI</p> 
                              </div>
-                         </div>
+                         </div> */}
 
                        
                     </>
