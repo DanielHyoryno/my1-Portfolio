@@ -1,153 +1,140 @@
-import { useLayoutEffect, useRef, useState } from 'react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/all';
+// src/Components/Experience.jsx
+import { useLayoutEffect, useRef, useState } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/all";
+gsap.registerPlugin(ScrollTrigger);
 
-const Experience = () => {
-    const comp = useRef(null);
-    const [showExperience, setShowExperience] = useState(false); // Start with Experience hidden
-    gsap.registerPlugin(ScrollTrigger);
+// Put newest last if you want the diagonal to "descend" as you go
+const EXPERIENCE = [
+  { time: "2022 - 2023", title: "Inventory manager", org: "Proxima Centauri", desc: "Manage and maintain inventory stocks & Provided front desk support, addressing client inquiries and offering." },
+  { time: "2024 - 2025", title: "External Event Organizer", org: "Bina Nusantara Computer Club (BNCC)", desc: "Organized external events and Specialized in event design and documentation, ensuring smooth planning, branding consistency, and clear reporting for external collaborations." },
+];
 
-    useLayoutEffect(() => {
-        let ctx = gsap.context(() => {
-            gsap.from(".experience-item", {
-                opacity: 0.01,
-                y: 100,
-                stagger: 1,
-                duration: 1.5,
-                scrollTrigger: {
-                    trigger: "#Experience",
-                    start: "top 150%",
-                    end: "bottom 50%",
-                    scrub: 1,
-                }
-            });
+const EDUCATION = [
+  { time: "2023 - Present", title: "Bina Nusantara University", org: "Computer Science", desc: "" },
+  { time: "2020 - 2023", title: "Gembala Baik - Senior High School", org: "School of Mathematics and Science", desc: "" },
+  { time: "2017 - 2020", title: "Gembala Baik - Junior High School", org: "Science, Bilingual", desc: "" },
+];
 
-            gsap.from(".timeline-dot", {
-                scale: 0,
-                duration: 0.5,
-                scrollTrigger: {
-                    trigger: "#Experience",
-                    start: "top center",
-                    end: "bottom center",
-                    scrub: 1,
-                }
-            });
-        }, comp);
+export default function Experience() {
+  const comp = useRef(null);
+  const [showExperience, setShowExperience] = useState(true);
 
-        return () => ctx.revert();
-    }, []);
+  useLayoutEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const ctx = gsap.context(() => {
+      gsap.from(".timeline-line", {
+        scaleY: 0,
+        transformOrigin: "top center",
+        duration: 0.8,
+        ease: "power2.out",
+        scrollTrigger: { trigger: "#Experience", start: "top 75%" },
+      });
 
-    return (
-        <div ref={comp} className="py-20 lg:py-28 md:px-10 px-4 bg-gray-900">
-            <h1 className="text-3xl md:text-4xl text-white font-bold mb-6 text-center">
-                {showExperience ? "Experience" : "Education"}
-            </h1>
-            <div className="flex justify-center mb-4">
-                <button 
-                    onClick={() => setShowExperience(true)} 
-                    className={`px-4 py-2 rounded ${showExperience ? 'bg-blue-600' : 'bg-gray-600'} text-white transition duration-300`}
-                >
-                    Experience
-                </button>
-                <button 
-                    onClick={() => setShowExperience(false)} 
-                    className={`px-4 py-2 rounded ${!showExperience ? 'bg-blue-600' : 'bg-gray-600'} text-white transition duration-300 ml-2`}
-                >
-                    Education
-                </button>
-            </div>
-            <div id="Experience" className="max-w-4xl mx-auto w-full grid grid-cols-9 gap-0 px-2">
-                {showExperience ? (
-                    <>
-                        <div className="col-span-4 w-full h-full flex justify-center"> {/* Centering the content */}
-                             <div className="experience-item w-full h-full p-2 md:pl-2"> {/* Adjusted padding */}
-                                 <time className="mb-1 text-xs md:text-sm font-semibold leading-none text-gray-400">2022 - 2023</time> {/* Adjusted text size */}
-                                 <h3 className="text-md md:text-lg font-semibold text-gray-200 my-1">Inventory Manager</h3> {/* Adjusted text size */}
-                                 <p className="mb-2 text-xs md:text-base font-normal text-gray-500">Century Ponsel</p> {/* Adjusted text size */}
-                             </div>
-                         </div>
+      gsap.utils.toArray(".tl-card").forEach((el) => {
+        gsap.from(el, {
+          opacity: 0,
+          y: 30,
+          duration: 0.6,
+          ease: "power2.out",
+          scrollTrigger: { trigger: el, start: "top 85%" },
+        });
+      });
 
-                         {/* Timeline bar */}
-                         <div className="relative col-span-1 w-full h-full flex justify-center items-center">
-                             <div className="h-full w-1 bg-[#1484da]"></div>
-                             <div className="timeline-dot absolute w-4 h-4 rounded-full bg-[#1484da] z-10 text-white text-center"></div> {/* Adjusted size */}
-                         </div>
+      gsap.utils.toArray(".timeline-dot").forEach((dot) => {
+        gsap.from(dot, {
+          scale: 0.2,
+          opacity: 0,
+          duration: 0.35,
+          ease: "back.out(1.7)",
+          scrollTrigger: { trigger: dot, start: "top 90%" },
+        });
+      });
+    }, comp);
+    return () => ctx.revert();
+  }, []);
 
-                         {/* Right side - empty for first item */}
-                         <div className="col-span-4 w-full h-full"></div>
+  const data = showExperience ? EXPERIENCE : EDUCATION;
 
-                         {/* Left side - empty for second item
-                         <div className="col-span-4 w-full h-full"></div>
+  return (
+    <div ref={comp} className="bg-gray-900 py-20 lg:py-28 md:px-10 px-4">
+      <h1 className="text-3xl md:text-4xl text-white font-bold mb-6 text-center">
+        {showExperience ? "Experience" : "Education"}
+      </h1>
 
-                         <div className="relative col-span-1 w-full h-full flex justify-center items-center">
-                             <div className="h-full w-1 bg-[#1484da]"></div>
-                             <div className="timeline-dot absolute w-4 h-4 rounded-full bg-[#1484da] z-10 text-white text-center"></div> 
-                         </div> */}
+      {/* Toggle */}
+      <div className="mx-auto mb-10 flex max-w-xl justify-center rounded-full bg-white/5 p-1">
+        <button
+          onClick={() => setShowExperience(true)}
+          className={`w-1/2 rounded-full px-4 py-2 text-sm font-medium transition ${
+            showExperience ? "bg-blue-600 text-white" : "text-white/70 hover:text-white"
+          }`}
+        >
+          Experience
+        </button>
+        <button
+          onClick={() => setShowExperience(false)}
+          className={`w-1/2 rounded-full px-4 py-2 text-sm font-medium transition ${
+            !showExperience ? "bg-blue-600 text-white" : "text-white/70 hover:text-white"
+          }`}
+        >
+          Education
+        </button>
+      </div>
 
-                         {/* <div className="col-span-4 w-full h-full flex justify-center"> 
-                             <div className="experience-item w-full h-full p-2 md:pr-2"> 
-                                 <time className="mb-1 text-xs md:text-sm font-semibold leading-none text-gray-400">2021 - 2022</time>
-                                 <h3 className="text-md md:text-lg font-semibold text-gray-200 my-1">Inventory Manager</h3> 
-                                 <p className="mb-2 text-xs md:text-base font-normal text-gray-500">CV PROXIMA CENTAURI</p> 
-                             </div>
-                         </div> */}
+      {/* Timeline */}
+      <div id="Experience" className="relative mx-auto max-w-5xl">
+        {/* center vertical line */}
+        <div className="timeline-line pointer-events-none absolute left-1/2 top-0 hidden h-full w-[2px] -translate-x-1/2 bg-[#1484da] md:block" />
 
-                       
-                    </>
-                ) : (
-                    <>
-                        {/* Education Section */}
-                        <div className="col-span-4 w-full h-full flex justify-center"> {/* Centering the content */}
-                             <div className="experience-item w-full h-full p-2 md:pl-2"> {/* Adjusted padding */}
-                                 <time className="mb-1 text-xs md:text-sm font-semibold leading-none text-gray-400">2023 - Present</time> {/* Adjusted text size */}
-                                 <h3 className="text-md md:text-lg font-semibold text-gray-200 my-1">Bina Nusantara - Institute</h3> {/* Adjusted text size */}
-                                 <p className="mb-2 text-xs md:text-base font-normal text-gray-500">Computer Science</p> {/* Adjusted text size */}
-                             </div>
-                         </div>
+        <div className="flex flex-col gap-16 md:gap-8">
+            {data.map((item, idx) => {
+            const leftSide = idx % 2 === 0; // even = left, odd = right
 
-                         {/* Timeline bar */}
-                         <div className="relative col-span-1 w-full h-full flex justify-center items-center">
-                             <div className="h-full w-1 bg-[#1484da]"></div>
-                             <div className="timeline-dot absolute w-4 h-4 rounded-full bg-[#1484da] z-10 text-white text-center"></div> {/* Adjusted size */}
-                         </div>
+            return (
+                <div key={item.time + item.title} className="grid grid-cols-9 gap-4 items-center">
+                {/* Left column */}
+                <div className={`col-span-4 ${leftSide ? "" : "hidden md:block"}`}>
+                    {leftSide && (
+                    <div className="tl-card rounded-2xl border border-white/10 bg-white/5 p-5 shadow-sm backdrop-blur-sm transition hover:bg-white/10">
+                        <time className="mb-1 block text-xs md:text-sm font-semibold text-gray-400">
+                        {item.time}
+                        </time>
+                        <h3 className="text-lg md:text-xl font-semibold text-gray-100">
+                        {item.title}
+                        </h3>
+                        {item.org && <p className="text-sm text-blue-300">{item.org}</p>}
+                        {item.desc && <p className="mt-2 text-sm text-gray-300">{item.desc}</p>}
+                    </div>
+                    )}
+                </div>
 
-                         {/* Right side - empty for first item */}
-                         <div className="col-span-4 w-full h-full"></div>
+                {/* Center column with dot */}
+                <div className="col-span-1 flex justify-center relative">
+                    <span className="timeline-dot h-4 w-4 rounded-full bg-[#1484da] block" />
+                </div>
 
-                         {/* Left side - empty for second item */}
-                         <div className="col-span-4 w-full h-full"></div>
-
-                         <div className="relative col-span-1 w-full h-full flex justify-center items-center">
-                             <div className="h-full w-1 bg-[#1484da]"></div>
-                             <div className="timeline-dot absolute w-4 h-4 rounded-full bg-[#1484da] z-10 text-white text-center"></div> {/* Adjusted size */}
-                         </div>
-
-                         <div className="col-span-4 w-full h-full flex justify-center"> {/* Centering the content */}
-                             <div className="experience-item w-full h-full p-2 md:pr-2"> {/* Adjusted padding */}
-                                 <time className="mb-1 text-xs md:text-sm font-semibold leading-none text-gray-400">2020 - 2023</time> {/* Adjusted text size */}
-                                 <h3 className="text-md md:text-lg font-semibold text-gray-200 my-1">Gembala Baik - Senior High School</h3> {/* Adjusted text size */}
-                                 <p className="mb-2 text-xs md:text-base font-normal text-gray-500">School of Mathematics and Science</p> {/* Adjusted text size */}
-                             </div>
-                         </div>
-
-                         <div className="col-span-4 w-full h-full flex justify-center"> {/* Centering the content */}
-                             <div className="experience-item w-full h-full p-2 md:pl-2"> {/* Adjusted padding */}
-                                 <time className="mb-1 text-xs md:text-sm font-semibold leading-none text-gray-400">2017 - 2020</time> {/* Adjusted text size */}
-                                 <h3 className="text-md md:text-lg font-semibold text-gray-200 my-1">Gembala Baik - Junior High School</h3> {/* Adjusted text size */}
-                                 <p className="mb-2 text-xs md:text-base font-normal text-gray-500">School of Science, Bilingual</p> {/* Adjusted text size */}
-                             </div>
-                         </div>
-
-                         {/* Timeline bar */}
-                         <div className="relative col-span-1 w-full h-full flex justify-center items-center">
-                             <div className="h-full w-1 bg-[#1484da]"></div>
-                             <div className="timeline-dot absolute w-4 h-4 rounded-full bg-[#1484da] z-10 text-white text-center"></div> {/* Adjusted size */}
-                         </div>
-                    </>
-                )}
-            </div>
+                {/* Right column */}
+                <div className={`col-span-4 ${leftSide ? "hidden md:block" : ""}`}>
+                    {!leftSide && (
+                    <div className="tl-card rounded-2xl border border-white/10 bg-white/5 p-5 shadow-sm backdrop-blur-sm transition hover:bg-white/10">
+                        <time className="mb-1 block text-xs md:text-sm font-semibold text-gray-400">
+                        {item.time}
+                        </time>
+                        <h3 className="text-lg md:text-xl font-semibold text-gray-100">
+                        {item.title}
+                        </h3>
+                        {item.org && <p className="text-sm text-blue-300">{item.org}</p>}
+                        {item.desc && <p className="mt-2 text-sm text-gray-300">{item.desc}</p>}
+                    </div>
+                    )}
+                </div>
+                </div>
+            );
+            })}
         </div>
-    );
-}
+        </div>
 
-export default Experience;
+    </div>
+  );
+}

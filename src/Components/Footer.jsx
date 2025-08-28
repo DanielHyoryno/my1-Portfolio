@@ -11,13 +11,13 @@ const Footer = () => {
                 </div>
 
                 <div className="flex gap-5 my-2 justify-center">
-                    <a className="hover:underline" href="">Github</a>
-                    <a className="hover:underline" href="">Discord</a>
-                    <a className="hover:underline" href="">LinkedIn</a>
+                    <a className="hover:underline" href="https://github.com/DanielHyoryno">Github</a>
+                    <a className="hover:underline" href="https://discordapp.com/users/514364694610444289">Discord</a>
+                    <a className="hover:underline" href="https://www.linkedin.com/in/daniel-hyoryno-thenaka-b6487032a/?originalSubdomain=id">LinkedIn</a>
                 </div>
             </div>
             <hr />
-            <span>&copy; Daniel Hyoryno Thenaka @2024</span>
+            <span>&copy; Daniel Hyoryno Thenaka</span>
         </div>
     );
 }

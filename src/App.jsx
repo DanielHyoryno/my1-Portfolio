@@ -12,7 +12,7 @@ function App() {
     <>
       <Header />
       <Banner />
-      {/* <PortoGrid/> */}
+      <PortoGrid/>
       <About />
       <Experience />
       <Skills />

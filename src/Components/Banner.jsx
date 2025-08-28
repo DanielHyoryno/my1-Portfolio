@@ -108,21 +108,54 @@ const Banner = () => {
 
 
                 {/* Social Media Links and Second Profile Picture Section */}
+                {/* Social Media Links and Second Profile Picture Section */}
                 <div className='text-white flex lg:flex-row flex-col lg:justify-around items-center'>
-                    <div id="title" className='flex gap-4 lg:flex-col justify-center mt-10'>
-                        <FiGithub className='social-icon bg-gray-900 p-[6px] text-3xl rounded' />
-                        <FaLinkedinIn className='social-icon bg-gray-900 p-[6px] text-3xl rounded' />
-                        <FaFacebookF className='social-icon bg-gray-900 p-[6px] text-3xl rounded' />
-                        <FiInstagram className='social-icon bg-gray-900 p-[6px] text-3xl rounded' />
-                    </div>
+                <div id="title" className='flex gap-4 lg:flex-col justify-center mt-10'>
+                    <a
+                    href="https://github.com/DanielHyoryno"
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label="GitHub"
+                    >
+                    <FiGithub className='social-icon bg-gray-900 p-[6px] text-3xl rounded hover:bg-blue-500 transition-colors' />
+                    </a>
 
-                    <img id="image" className='rounded-t-full lg:h-80 h-96 mt-10' src={profile2} alt="" />
+                    <a
+                    href="https://www.linkedin.com/in/daniel-hyoryno-thenaka-b6487032a/?originalSubdomain=id"
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label="LinkedIn"
+                    >
+                    <FaLinkedinIn className='social-icon bg-gray-900 p-[6px] text-3xl rounded hover:bg-blue-500 transition-colors' />
+                    </a>
 
-                    <div id="title" className='mouse-section hidden lg:flex flex-col justify-center'>
-                        <LuMouse className='text-xl animate-bounce mb-3' />
-                        <p className='[writing-mode:vertical-rl]'>Scroll Down.</p>
-                    </div>
+                    <a
+                    href="https://www.facebook.com/zentones.null"
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label="Facebook"
+                    >
+                    <FaFacebookF className='social-icon bg-gray-900 p-[6px] text-3xl rounded hover:bg-blue-500 transition-colors' />
+                    </a>
+
+                    <a
+                    href="https://www.instagram.com/daniel.hyory/"
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label="Instagram"
+                    >
+                    <FiInstagram className='social-icon bg-gray-900 p-[6px] text-3xl rounded hover:bg-blue-500 transition-colors' />
+                    </a>
                 </div>
+
+                <img id="image" className='rounded-t-full lg:h-80 h-96 mt-10' src={profile2} alt="" />
+
+                <div id="title" className='mouse-section hidden lg:flex flex-col justify-center'>
+                    <LuMouse className='text-xl animate-bounce mb-3' />
+                    <p className='[writing-mode:vertical-rl]'>Scroll Down.</p>
+                </div>
+                </div>
+
             </div>
         </>
     );

@@ -4,69 +4,56 @@ import { BsBag } from "react-icons/bs";
 import { HiOutlineLightBulb } from "react-icons/hi";
 import { AiOutlineMessage } from "react-icons/ai";
 
-const Menu = () => {
-    return (
-        <div className="flex justify-center flex-col items-center">
-            <div className="flex gap-4 backdrop-blur-lg bg-gray-600 bg-opacity-30 py-2 px-8 rounded-md fixed bottom-10">
-                
-                <Link 
-                    activeClass="bg-[#1484da] rounded-full"
-                    to="Home"
-                    smooth={true}
-                    spy={true}
-                    offset={-72}
-                    duration={350}
-                > 
-                    <IoHomeOutline className="text-[26px] m-[10px] text-center" />
-                </Link>
+// Tune these once, then forget about "why is it off by 40px" forever.
+const OFFSETS = {
+  Home: -72,        // header height
+  About: -96,       // usually a bit more top padding
+  Experience: -96,  // same vibe
+  Skills: -96,
+  Footer: -72       // usually doesn’t need extra
+};
 
-                <Link 
-                    activeClass="bg-[#1484da] rounded-full"
-                    to="About"
-                    smooth={true}
-                    spy={true}
-                    offset={-200}
-                    duration={350}
-                > 
-                    <IoPersonOutline className="text-[26px] m-[10px] text-center" />
-                </Link>
+const NAV = [
+  { to: "Home",       icon: IoHomeOutline,     label: "Home" },
+  { to: "About",      icon: IoPersonOutline,   label: "About" },
+  { to: "Experience", icon: BsBag,             label: "Experience" },
+  { to: "Skills",     icon: HiOutlineLightBulb,label: "Skills" },
+  { to: "Footer",     icon: AiOutlineMessage,  label: "Contact" },
+];
 
-                <Link 
-                    activeClass="bg-[#1484da] rounded-full"
-                    to="Experience"
-                    smooth={true}
-                    spy={true}
-                    offset={-300}
-                    duration={350}
-                > 
-                    <BsBag className="text-[26px] m-[10px] text-center" />
-                </Link>
-
-                <Link 
-                    activeClass="bg-[#1484da] rounded-full"
-                    to="Skills"
-                    smooth={true}
-                    spy={true}
-                    offset={-250}
-                    duration={350}
-                > 
-                    <HiOutlineLightBulb className="text-[26px] m-[10px] text-center" />
-                </Link>
-
-                <Link 
-                    activeClass="bg-[#1484da] rounded-full"
-                    to="Footer"
-                    smooth={true}
-                    spy={true}
-                    offset={-250}
-                    duration={150}
-                > 
-                    <AiOutlineMessage className="text-[26px] m-[10px] text-center" />
-                </Link>
-
-            </div>
-        </div>
-    );
+export default function Menu() {
+  return (
+    <nav
+      role="navigation"
+      aria-label="Section navigation"
+      className="pointer-events-none fixed inset-x-0 bottom-10 z-40 flex justify-center"
+    >
+      <div className="pointer-events-auto flex gap-2 rounded-xl bg-gray-600/30 px-3 py-2 backdrop-blur-lg">
+        {NAV.map(({ to, icon: Icon, label }) => (
+          <Link
+            key={to}
+            to={to}
+            spy={true}
+            smooth={true}
+            duration={300}
+            spyThrottle={200}
+            offset={OFFSETS[to] ?? -80}
+            // react-scroll applies this class to the Link when active
+            activeClass="active"
+            // Base styles live here so activeClass actually shows.
+            className="
+              group flex h-12 w-12 items-center justify-center rounded-full
+              text-white/80 transition
+              hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-sky-400
+              [&.active]:bg-[#1484da] [&.active]:text-white
+            "
+            aria-label={label}
+            title={label}
+          >
+            <Icon className="text-[22px]" />
+          </Link>
+        ))}
+      </div>
+    </nav>
+  );
 }
-
-export default Menu;
