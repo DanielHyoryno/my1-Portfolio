@@ -6,8 +6,8 @@ gsap.registerPlugin(ScrollTrigger);
 
 // Put newest last if you want the diagonal to "descend" as you go
 const EXPERIENCE = [
-  { time: "2022 - 2023", title: "Inventory manager", org: "Proxima Centauri", desc: "Manage and maintain inventory stocks & Provided front desk support, addressing client inquiries and offering." },
   { time: "2024 - 2025", title: "External Event Organizer", org: "Bina Nusantara Computer Club (BNCC)", desc: "Organized external events and Specialized in event design and documentation, ensuring smooth planning, branding consistency, and clear reporting for external collaborations." },
+  { time: "2022 - 2023", title: "Inventory manager", org: "Proxima Centauri", desc: "Manage and maintain inventory stocks & Provided front desk support, addressing client inquiries and offering." },
 ];
 
 const EDUCATION = [
