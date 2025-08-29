@@ -121,7 +121,7 @@ const Banner = () => {
                     </a>
 
                     <a
-                    href="https://www.linkedin.com/in/daniel-hyoryno-thenaka-b6487032a/?originalSubdomain=id"
+                    href="https://www.linkedin.com/in/daniel-hyoryno-thenaka/?originalSubdomain=id"
                     target="_blank"
                     rel="noreferrer"
                     aria-label="LinkedIn"
