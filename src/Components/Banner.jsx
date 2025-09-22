@@ -1,7 +1,7 @@
 import { FiGithub, FiInstagram } from 'react-icons/fi';
 import { FaLinkedinIn, FaFacebookF } from 'react-icons/fa6';
 import { LuMouse } from 'react-icons/lu';
-import profile1 from '../assets/profile1.png';
+import profile1 from '../assets/profile1.jpg';
 import profile2 from '../assets/profile2.jpg';
 
 import { useLayoutEffect, useRef, useState, useEffect } from 'react';
@@ -87,12 +87,24 @@ const Banner = () => {
                             </p>
 
                             <div className="flex space-x-4 mt-6 flex-wrap">
-                                <button className="px-4 py-2 rounded mt-6 border border-[#1484da] hover:bg-blue-400 hover:border-transparent transition duration-300 text-white text-sm">
-                                    Download CV
-                                </button>
-                                <button className="px-4 py-2 rounded mt-6 bg-blue-600 hover:bg-blue-400 transition duration-300 text-white text-sm">
-                                    About Me
-                                </button>
+                                <a
+                                href="/cv/DanielHyorynoThenaka_CV.pdf"
+                                download="DanielHyorynoThenaka_CV.pdf"
+                                className="px-4 py-2 rounded mt-6 border border-[#1484da] hover:bg-blue-400 hover:border-transparent transition duration-300 text-white text-sm inline-flex items-center gap-2"
+                                aria-label="Download CV (PDF)"
+                                >
+                                Download CV
+                                </a>
+
+                                <a
+                                href="/portfolio/DanielHyorynoThenaka_Portfolio.pdf"                // <-- put portfolio in /public/portfolio/
+                                download="DanielHyorynoThenaka_Portfolio.pdf"
+                                className="px-4 py-2 rounded mt-6 bg-blue-600 hover:bg-blue-400 transition duration-300 text-white text-sm inline-flex items-center gap-2"
+                                aria-label="Download Portfolio (PDF)"
+                                target="_blank" rel="noopener"                          // optional: also opens in new tab
+                                >
+                                Download Portfolio
+                                </a>
                             </div>
                         </div>
 

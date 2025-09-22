@@ -2,9 +2,9 @@ import React, { useRef, useLayoutEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { AiOutlineHtml5 } from "react-icons/ai";
-import { TbBrandBootstrap, TbBrandCss3, TbBrandTailwind } from "react-icons/tb";
+import { TbBrandBootstrap, TbBrandCss3, TbBrandMysql, TbBrandSupabase, TbBrandTailwind } from "react-icons/tb";
 import { DiJavascript1 } from "react-icons/di";
-import { IoLogoReact } from "react-icons/io5";
+import { IoLogoLaravel, IoLogoReact } from "react-icons/io5";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -38,7 +38,10 @@ const Skills = () => {
         { Icon: AiOutlineHtml5, name: "HTML", level: "Advanced" },
         { Icon: TbBrandCss3, name: "CSS", level: "Advanced" },
         { Icon: DiJavascript1, name: "JavaScript", level: "Intermediate" },
-        { Icon: IoLogoReact, name: "React JSX", level: "Basic" },
+        { Icon: IoLogoReact, name: "React", level: "Intermediate" },
+        { Icon: IoLogoLaravel, name: "Laravel", level: "Intermediate" },
+        { Icon: TbBrandMysql, name: "MySQL", level: "Intermediate" },
+        { Icon: TbBrandSupabase, name: "SupaBase", level: "Basic" },
         { Icon: TbBrandBootstrap, name: "Bootstrap", level: "Basic" },
         { Icon: TbBrandTailwind, name: "Tailwind", level: "Basic" },
     ];

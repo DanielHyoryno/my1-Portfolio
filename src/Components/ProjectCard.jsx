@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 
 export default function ProjectCard({ p }) {
   return (
+    <section id="ProjectCard" className="items-center">
     <motion.article
       className="flex h-full flex-col rounded-2xl border border-white/10 bg-white/5 p-4 transition hover:bg-white/10"
       initial={{ opacity: 0, y: 20 }}
@@ -67,5 +68,6 @@ export default function ProjectCard({ p }) {
         )}
       </div>
     </motion.article>
+    </section>
   );
 }

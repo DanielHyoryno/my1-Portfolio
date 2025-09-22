@@ -6,8 +6,20 @@ gsap.registerPlugin(ScrollTrigger);
 
 // Put newest last if you want the diagonal to "descend" as you go
 const EXPERIENCE = [
-  { time: "2024 - 2025", title: "External Event Organizer", org: "Bina Nusantara Computer Club (BNCC)", desc: "Organized external events and Specialized in event design and documentation, ensuring smooth planning, branding consistency, and clear reporting for external collaborations." },
-  { time: "2022 - 2023", title: "Inventory manager", org: "Proxima Centauri", desc: "Manage and maintain inventory stocks & Provided front desk support, addressing client inquiries and offering." },
+  {
+    time: "2024 - 2025",
+    title: "External Event Organizer",
+    org: "Bina Nusantara Computer Club (BNCC)",
+    desc:
+      "Organized external events and Specialized in event design and documentation, ensuring smooth planning, branding consistency, and clear reporting for external collaborations.",
+  },
+  {
+    time: "2022 - 2023",
+    title: "Inventory manager",
+    org: "Proxima Centauri",
+    desc:
+      "Manage and maintain inventory stocks & Provided front desk support, addressing client inquiries and offering.",
+  },
 ];
 
 const EDUCATION = [
@@ -84,57 +96,55 @@ export default function Experience() {
 
       {/* Timeline */}
       <div id="Experience" className="relative mx-auto max-w-5xl">
-        {/* center vertical line */}
-        <div className="timeline-line pointer-events-none absolute left-1/2 top-0 hidden h-full w-[2px] -translate-x-1/2 bg-[#1484da] md:block" />
+        {/* center vertical line — always visible, behind cards */}
+        <div className="timeline-line pointer-events-none absolute left-1/2 top-0 z-0 h-full w-[2px] -translate-x-1/2 bg-[#1484da]" />
 
-        <div className="flex flex-col gap-16 md:gap-8">
-            {data.map((item, idx) => {
+        <div className="flex flex-col gap-10 md:gap-8">
+          {data.map((item, idx) => {
             const leftSide = idx % 2 === 0; // even = left, odd = right
-
             return (
-                <div key={item.time + item.title} className="grid grid-cols-9 gap-4 items-center">
-                {/* Left column */}
-                <div className={`col-span-4 ${leftSide ? "" : "hidden md:block"}`}>
-                    {leftSide && (
+              <div
+                key={item.time + item.title}
+                className="grid items-center gap-4 px-1
+                           [grid-template-columns:minmax(0,1fr)_16px_minmax(0,1fr)]"
+              >
+                {/* Left cell */}
+                <div className="col-[1/2] z-10">
+                  {leftSide ? (
                     <div className="tl-card rounded-2xl border border-white/10 bg-white/5 p-5 shadow-sm backdrop-blur-sm transition hover:bg-white/10">
-                        <time className="mb-1 block text-xs md:text-sm font-semibold text-gray-400">
-                        {item.time}
-                        </time>
-                        <h3 className="text-lg md:text-xl font-semibold text-gray-100">
-                        {item.title}
-                        </h3>
-                        {item.org && <p className="text-sm text-blue-300">{item.org}</p>}
-                        {item.desc && <p className="mt-2 text-sm text-gray-300">{item.desc}</p>}
+                      <time className="mb-1 block text-xs md:text-sm font-semibold text-gray-400">{item.time}</time>
+                      <h3 className="text-lg md:text-xl font-semibold text-gray-100">{item.title}</h3>
+                      {item.org && <p className="text-sm text-blue-300">{item.org}</p>}
+                      {item.desc && <p className="mt-2 text-sm text-gray-300">{item.desc}</p>}
                     </div>
-                    )}
+                  ) : (
+                    <div className="h-0" />
+                  )}
                 </div>
 
-                {/* Center column with dot */}
-                <div className="col-span-1 flex justify-center relative">
-                    <span className="timeline-dot h-4 w-4 rounded-full bg-[#1484da] block" />
+                {/* Middle dot */}
+                <div className="col-[2/3] flex justify-center z-10">
+                  <span className="timeline-dot block h-4 w-4 rounded-full bg-[#1484da]" />
                 </div>
 
-                {/* Right column */}
-                <div className={`col-span-4 ${leftSide ? "hidden md:block" : ""}`}>
-                    {!leftSide && (
+                {/* Right cell */}
+                <div className="col-[3/4] z-10">
+                  {!leftSide ? (
                     <div className="tl-card rounded-2xl border border-white/10 bg-white/5 p-5 shadow-sm backdrop-blur-sm transition hover:bg-white/10">
-                        <time className="mb-1 block text-xs md:text-sm font-semibold text-gray-400">
-                        {item.time}
-                        </time>
-                        <h3 className="text-lg md:text-xl font-semibold text-gray-100">
-                        {item.title}
-                        </h3>
-                        {item.org && <p className="text-sm text-blue-300">{item.org}</p>}
-                        {item.desc && <p className="mt-2 text-sm text-gray-300">{item.desc}</p>}
+                      <time className="mb-1 block text-xs md:text-sm font-semibold text-gray-400">{item.time}</time>
+                      <h3 className="text-lg md:text-xl font-semibold text-gray-100">{item.title}</h3>
+                      {item.org && <p className="text-sm text-blue-300">{item.org}</p>}
+                      {item.desc && <p className="mt-2 text-sm text-gray-300">{item.desc}</p>}
                     </div>
-                    )}
+                  ) : (
+                    <div className="h-0" />
+                  )}
                 </div>
-                </div>
+              </div>
             );
-            })}
+          })}
         </div>
-        </div>
-
+      </div>
     </div>
   );
 }
