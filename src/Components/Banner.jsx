@@ -81,9 +81,9 @@ const Banner = () => {
                                 />
                             </h2>
                             
-                            <p id='title' className="text-lg md:text-2xl text-blue-400">Novice Developer</p>
+                            <p id='title' className="text-lg md:text-2xl text-blue-400">Computer Science Undergraduate</p>
                             <p id='title' className="text-sm md:text-base text-gray-300">
-                                Hello! I am just a student who is embarking on an exciting journey to establish my own career in Software Engineering.
+                                an undergraduate <span className="font-semibold">Computer Science Student at BINUS @Alam Sutera</span> , passionate about technology and learning. I am currently focused on mastering full-stack web development, aiming to build user-friendly, efficient, and scalable applications.
                             </p>
 
                             <div className="flex space-x-4 mt-6 flex-wrap">

@@ -58,25 +58,24 @@ const About = () => {
 
                         <div className="bg-gray-900 p-2 lg:p-4 rounded-xl flex flex-col items-center justify-center w-[80px] lg:w-auto"> {/* Adjusted padding and width */}
                             <GrAccessibility className="text-[16px] lg:text-[24px] text-center text-[#1484da] mb-2" /> {/* Adjusted icon size */}
-                            <h3 className="text-[12px] lg:text-[18px] font-bold about-text">Best-in</h3> {/* Adjusted text size */}
-                            <span className="text-[10px] lg:text-[16px] about-text">Group Projects</span> {/* Adjusted text size */}
+                            <h3 className="text-[12px] lg:text-[18px] font-bold about-text">Organization</h3> {/* Adjusted text size */}
+                            <span className="text-[10px] lg:text-[16px] about-text">BNCC</span> {/* Adjusted text size */}
                         </div>
 
                         <div className="bg-gray-900 p-2 lg:p-4 rounded-xl flex flex-col items-center justify-center w-[80px] lg:w-auto"> {/* Adjusted padding and width */}
                             <GrUserExpert className="text-[16px] lg:text-[24px] text-center text-[#1484da] mb-2" /> {/* Adjusted icon size */}
                             <h3 className="text-[12px] lg:text-[18px] font-bold about-text">Expert</h3> {/* Adjusted text size */}
-                            <span className="text-[10px] lg:text-[16px] about-text">Discipline</span> {/* Adjusted text size */}
+                            <span className="text-[10px] lg:text-[16px] about-text">Laravel/React</span> {/* Adjusted text size */}
                         </div>
                     </div>
 
                     <div className="bg-transparent p-2 lg:p-4 rounded-lg max-w-lg mx-auto text-left lg:text-left">
-                        <p className="text-[12px] lg:text-[16px] mb-3 lg:mb-6 about-text"> {/* Adjusted text size */}
-                            For the past year, I have been on an exciting journey to learn more about Software Engineering.
-                        </p>
+                        {/* <p className="text-[12px] lg:text-[16px] mb-3 lg:mb-6 about-text"> {/* Adjusted text size */}
+                            {/* I am a Computer Science undergraduate at BINUS University @Alam Sutera, focusing on software engineering streaming and full-stack web development.</p> */}
                         <p className="text-[12px] lg:text-[16px] about-text"> {/* Adjusted text size */}
-                            Throughout this time, I have dedicated myself to learning both front-end and back-end programming, 
-                            equipping myself with the skills necessary to bring my vision to life.
-                        </p>
+                        Over the past years, I have strengthened my teamwork and leadership skills through academic projects and active participation in BNCC Organization events.
+                        <br></br><br></br>I value health, consistency, and balance, which help me stay focused and adaptable in both academics and organizations.
+                        My goal is to keep improving my technical expertise while expanding my professional network in the tech industry.</p>
                     </div>
                 </div>
             </div>

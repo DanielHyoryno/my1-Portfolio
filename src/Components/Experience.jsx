@@ -2,6 +2,9 @@
 import { useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
+// ✨ NEW: framer-motion for tab transitions
+import { motion, AnimatePresence } from "framer-motion";
+
 gsap.registerPlugin(ScrollTrigger);
 
 // Put newest last if you want the diagonal to "descend" as you go
@@ -11,14 +14,14 @@ const EXPERIENCE = [
     title: "External Event Organizer",
     org: "Bina Nusantara Computer Club (BNCC)",
     desc:
-      "Organized external events and Specialized in event design and documentation, ensuring smooth planning, branding consistency, and clear reporting for external collaborations.",
+      "Organized external events and specialized in event design and documentation, ensuring smooth planning, branding consistency, and clear reporting for external collaborations.",
   },
   {
     time: "2022 - 2023",
-    title: "Inventory manager",
+    title: "Inventory Manager",
     org: "Proxima Centauri",
     desc:
-      "Manage and maintain inventory stocks & Provided front desk support, addressing client inquiries and offering.",
+      "Managed and maintained inventory stocks & provided front desk support, addressing client inquiries and offering assistance.",
   },
 ];
 
@@ -27,6 +30,13 @@ const EDUCATION = [
   { time: "2020 - 2023", title: "Gembala Baik - Senior High School", org: "School of Mathematics and Science", desc: "" },
   { time: "2017 - 2020", title: "Gembala Baik - Junior High School", org: "Science, Bilingual", desc: "" },
 ];
+
+// ✨ Reusable variants for a smooth in/out
+const listVariants = {
+  initial: { opacity: 0, y: 12 },
+  animate: { opacity: 1, y: 0, transition: { duration: 0.28, ease: "easeOut" } },
+  exit:    { opacity: 0, y: -12, transition: { duration: 0.2, ease: "easeIn" } },
+};
 
 export default function Experience() {
   const comp = useRef(null);
@@ -75,22 +85,33 @@ export default function Experience() {
       </h1>
 
       {/* Toggle */}
-      <div className="mx-auto mb-10 flex max-w-xl justify-center rounded-full bg-white/5 p-1">
+      <div className="mx-auto mb-10 flex max-w-xl justify-center rounded-full bg-white/5 p-1 relative">
+        {/* Optional: subtle scale on active button */}
         <button
           onClick={() => setShowExperience(true)}
-          className={`w-1/2 rounded-full px-4 py-2 text-sm font-medium transition ${
-            showExperience ? "bg-blue-600 text-white" : "text-white/70 hover:text-white"
-          }`}
+          className={`w-1/2 rounded-full px-4 py-2 text-sm font-medium transition
+            ${showExperience ? "bg-blue-600 text-white" : "text-white/70 hover:text-white"}`}
         >
-          Experience
+          {showExperience ? (
+            <motion.span layoutId="tabLabelExp" initial={false} animate={{ scale: 1 }} transition={{ type: "spring", stiffness: 300, damping: 22 }}>
+              Experience
+            </motion.span>
+          ) : (
+            "Experience"
+          )}
         </button>
         <button
           onClick={() => setShowExperience(false)}
-          className={`w-1/2 rounded-full px-4 py-2 text-sm font-medium transition ${
-            !showExperience ? "bg-blue-600 text-white" : "text-white/70 hover:text-white"
-          }`}
+          className={`w-1/2 rounded-full px-4 py-2 text-sm font-medium transition
+            ${!showExperience ? "bg-blue-600 text-white" : "text-white/70 hover:text-white"}`}
         >
-          Education
+          {!showExperience ? (
+            <motion.span layoutId="tabLabelEdu" initial={false} animate={{ scale: 1 }} transition={{ type: "spring", stiffness: 300, damping: 22 }}>
+              Education
+            </motion.span>
+          ) : (
+            "Education"
+          )}
         </button>
       </div>
 
@@ -99,51 +120,62 @@ export default function Experience() {
         {/* center vertical line — always visible, behind cards */}
         <div className="timeline-line pointer-events-none absolute left-1/2 top-0 z-0 h-full w-[2px] -translate-x-1/2 bg-[#1484da]" />
 
-        <div className="flex flex-col gap-10 md:gap-8">
-          {data.map((item, idx) => {
-            const leftSide = idx % 2 === 0; // even = left, odd = right
-            return (
-              <div
-                key={item.time + item.title}
-                className="grid items-center gap-4 px-1
-                           [grid-template-columns:minmax(0,1fr)_16px_minmax(0,1fr)]"
-              >
-                {/* Left cell */}
-                <div className="col-[1/2] z-10">
-                  {leftSide ? (
-                    <div className="tl-card rounded-2xl border border-white/10 bg-white/5 p-5 shadow-sm backdrop-blur-sm transition hover:bg-white/10">
-                      <time className="mb-1 block text-xs md:text-sm font-semibold text-gray-400">{item.time}</time>
-                      <h3 className="text-lg md:text-xl font-semibold text-gray-100">{item.title}</h3>
-                      {item.org && <p className="text-sm text-blue-300">{item.org}</p>}
-                      {item.desc && <p className="mt-2 text-sm text-gray-300">{item.desc}</p>}
+        {/* ✨ Animated content swap */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={showExperience ? "exp" : "edu"}
+            variants={listVariants}
+            initial="initial"
+            animate="animate"
+            exit="exit"
+          >
+            <div className="flex flex-col gap-10 md:gap-8">
+              {data.map((item, idx) => {
+                const leftSide = idx % 2 === 0; // even = left, odd = right
+                return (
+                  <div
+                    key={item.time + item.title}
+                    className="grid items-center gap-4 px-1
+                               [grid-template-columns:minmax(0,1fr)_16px_minmax(0,1fr)]"
+                  >
+                    {/* Left cell */}
+                    <div className="col-[1/2] z-10">
+                      {leftSide ? (
+                        <div className="tl-card rounded-2xl border border-white/10 bg-white/5 p-5 shadow-sm backdrop-blur-sm transition hover:bg-white/10">
+                          <time className="mb-1 block text-xs md:text-sm font-semibold text-gray-400">{item.time}</time>
+                          <h3 className="text-lg md:text-xl font-semibold text-gray-100">{item.title}</h3>
+                          {item.org && <p className="text-sm text-blue-300">{item.org}</p>}
+                          {item.desc && <p className="mt-2 text-sm text-gray-300">{item.desc}</p>}
+                        </div>
+                      ) : (
+                        <div className="h-0" />
+                      )}
                     </div>
-                  ) : (
-                    <div className="h-0" />
-                  )}
-                </div>
 
-                {/* Middle dot */}
-                <div className="col-[2/3] flex justify-center z-10">
-                  <span className="timeline-dot block h-4 w-4 rounded-full bg-[#1484da]" />
-                </div>
-
-                {/* Right cell */}
-                <div className="col-[3/4] z-10">
-                  {!leftSide ? (
-                    <div className="tl-card rounded-2xl border border-white/10 bg-white/5 p-5 shadow-sm backdrop-blur-sm transition hover:bg-white/10">
-                      <time className="mb-1 block text-xs md:text-sm font-semibold text-gray-400">{item.time}</time>
-                      <h3 className="text-lg md:text-xl font-semibold text-gray-100">{item.title}</h3>
-                      {item.org && <p className="text-sm text-blue-300">{item.org}</p>}
-                      {item.desc && <p className="mt-2 text-sm text-gray-300">{item.desc}</p>}
+                    {/* Middle dot */}
+                    <div className="col-[2/3] flex justify-center z-10">
+                      <span className="timeline-dot block h-4 w-4 rounded-full bg-[#1484da]" />
                     </div>
-                  ) : (
-                    <div className="h-0" />
-                  )}
-                </div>
-              </div>
-            );
-          })}
-        </div>
+
+                    {/* Right cell */}
+                    <div className="col-[3/4] z-10">
+                      {!leftSide ? (
+                        <div className="tl-card rounded-2xl border border-white/10 bg-white/5 p-5 shadow-sm backdrop-blur-sm transition hover:bg-white/10">
+                          <time className="mb-1 block text-xs md:text-sm font-semibold text-gray-400">{item.time}</time>
+                          <h3 className="text-lg md:text-xl font-semibold text-gray-100">{item.title}</h3>
+                          {item.org && <p className="text-sm text-blue-300">{item.org}</p>}
+                          {item.desc && <p className="mt-2 text-sm text-gray-300">{item.desc}</p>}
+                        </div>
+                      ) : (
+                        <div className="h-0" />
+                      )}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </motion.div>
+        </AnimatePresence>
       </div>
     </div>
   );
